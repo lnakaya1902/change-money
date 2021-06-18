@@ -1,11 +1,13 @@
 package com.change.money.app.controller.dto;
 
 import com.change.money.app.exception.ErrorCodeEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseWebResponse<T> {
     private ErrorCodeEnum errorCode;
     private T data;

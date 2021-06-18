@@ -1,5 +1,6 @@
-package com.change.money.app.controller.dto;
+package com.change.money.app.service.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,12 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ChangeMoneyWebResponse {
+@AllArgsConstructor
+public class ExchangeRateDto {
 
-    private String amount;
-    private String amountChanged;
+    private String value;
     private String originCurrency;
     private String destinationCurrency;
-    private String exchangeRate;
 
 }
