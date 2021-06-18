@@ -1,18 +1,18 @@
 package com.change.money.app.controller.dto;
 
-import com.neovisionaries.i18n.CurrencyCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.neovisionaries.i18n.CurrencyCode;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExchangeRateWebRequest {
+public class ChangeMoneyWebDtoRequest {
 
-    private String value;
+    private String amount;
     private CurrencyCode originCurrency;
     private CurrencyCode destinationCurrency;
 

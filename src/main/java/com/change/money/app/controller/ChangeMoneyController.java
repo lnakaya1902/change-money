@@ -1,7 +1,7 @@
 package com.change.money.app.controller;
 
-import com.change.money.app.controller.dto.BaseWebResponse;
-import com.change.money.app.controller.dto.ChangeMoneyWebRequest;
+import com.change.money.app.controller.dto.BaseWebDtoResponse;
+import com.change.money.app.controller.dto.ChangeMoneyWebDtoRequest;
 import com.change.money.app.service.ChangeMoneyService;
 import com.change.money.app.service.dto.ChangeMoneyRequest;
 import io.reactivex.Single;
@@ -27,17 +27,17 @@ public class ChangeMoneyController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Single<ResponseEntity<BaseWebResponse>> applyExchangeRate(@RequestBody ChangeMoneyWebRequest changeMoneyWebRequest) {
-        return changeMoneyService.applyExchangeRate(toChangeMoneyRequest(changeMoneyWebRequest))
+    public Single<ResponseEntity<BaseWebDtoResponse>> applyExchangeRate(@RequestBody ChangeMoneyWebDtoRequest changeMoneyWebDtoRequest) {
+        return changeMoneyService.applyExchangeRate(toChangeMoneyRequest(changeMoneyWebDtoRequest))
                 .subscribeOn(Schedulers.io())
-                .map(changeMoneyResponse -> ResponseEntity.ok(BaseWebResponse.successWithData(changeMoneyResponse)));
+                .map(changeMoneyResponse -> ResponseEntity.ok(BaseWebDtoResponse.successWithData(changeMoneyResponse)));
     }
 
-    private ChangeMoneyRequest toChangeMoneyRequest(ChangeMoneyWebRequest changeMoneyWebRequest) {
+    private ChangeMoneyRequest toChangeMoneyRequest(ChangeMoneyWebDtoRequest changeMoneyWebDtoRequest) {
         ChangeMoneyRequest changeMoneyRequest = new ChangeMoneyRequest();
-        changeMoneyRequest.setAmount(changeMoneyWebRequest.getAmount());
-        changeMoneyRequest.setOriginCurrency(changeMoneyWebRequest.getOriginCurrency().name());
-        changeMoneyRequest.setDestinationCurrency(changeMoneyWebRequest.getDestinationCurrency().name());
+        changeMoneyRequest.setAmount(changeMoneyWebDtoRequest.getAmount());
+        changeMoneyRequest.setOriginCurrency(changeMoneyWebDtoRequest.getOriginCurrency().name());
+        changeMoneyRequest.setDestinationCurrency(changeMoneyWebDtoRequest.getDestinationCurrency().name());
         return changeMoneyRequest;
     }
 }

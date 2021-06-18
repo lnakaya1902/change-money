@@ -8,23 +8,23 @@ import lombok.Getter;
 @Getter
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BaseWebResponse<T> {
+public class BaseWebDtoResponse<T> {
     private ErrorCodeEnum errorCode;
     private T data;
 
-    public static BaseWebResponse successNoData() {
-        return BaseWebResponse.builder()
+    public static BaseWebDtoResponse successNoData() {
+        return BaseWebDtoResponse.builder()
                 .build();
     }
 
-    public static <T> BaseWebResponse<T> successWithData(T data) {
-        return BaseWebResponse.<T>builder()
+    public static <T> BaseWebDtoResponse<T> successWithData(T data) {
+        return BaseWebDtoResponse.<T>builder()
                 .data(data)
                 .build();
     }
 
-    public static BaseWebResponse error(ErrorCodeEnum errorCode) {
-        return BaseWebResponse.builder()
+    public static BaseWebDtoResponse error(ErrorCodeEnum errorCode) {
+        return BaseWebDtoResponse.builder()
                 .errorCode(errorCode)
                 .build();
     }

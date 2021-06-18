@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ChangeMoneyWebResponse {
+public class ChangeMoneyWebDtoResponse {
 
     private String amount;
     private String amountChanged;
