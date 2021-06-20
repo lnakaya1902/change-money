@@ -27,7 +27,10 @@ public class ChangeMoneyApplication {
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/api/login").permitAll()
+					.antMatchers("/h2/**").permitAll()
 					.anyRequest().authenticated();
+
+			http.headers().frameOptions().disable();
 		}
 	}
 
